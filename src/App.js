@@ -11,20 +11,19 @@ import './App.css';
 
 class App extends Component {
   render() {
-    return (<Provider>
-      <Router>
-        <React.Fragment>
-          <Navbar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Index} />
-              <Route exact path="/lyrics/track/:id" component={Lyrics} />
-            </Switch>
-          </div>
-        </React.Fragment>
-      </Router>
-    </Provider>
-    );
+    return <Provider>
+        <Router>
+          <React.Fragment>
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/lyric-finder" component={Index} />
+                <Route exact path="/lyric-finder/lyrics/track/:id" component={Lyrics} />
+              </Switch>
+            </div>
+          </React.Fragment>
+        </Router>
+      </Provider>;
   }
 }
 
