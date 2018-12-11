@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/lyric-finder/precache-manifest.f17170a227a7903f1e5138bfc7afa181.js"
+  "/lyric-finder/precache-manifest.83acb6385dfa70c5ec6fb3c18c662458.js"
 );
 
 workbox.clientsClaim();
