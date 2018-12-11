@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 
 const Context = React.createContext();
 
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'SEARCH_TRACKS':
+            return { 
+                ...state,
+                track_list: action.payload,
+                heading: 'Search Results'
+            }
+        default:
+            return state;
+    }
+}
+
 // Our Provider where we hold the state that we will be sharing
 export class Provider extends Component {
     state = {
         track_list: [],
-        heading: "Top 10 Tracks Baby"
+        heading: "Top 10 Tracks Baby",
+        dispatch: action => this.setState(state => reducer(state, action))
     }
     
     componentDidMount = async () => {
@@ -17,8 +31,6 @@ export class Provider extends Component {
         this.setState({
             track_list: parsedResponse.message.body.track_list
         })
-       
-
     }
 
     render() {
