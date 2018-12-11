@@ -14,8 +14,6 @@ export class Provider extends Component {
 
         let parsedResponse = await response.json();
 
-        console.log(parsedResponse);
-
         this.setState({
             track_list: parsedResponse.message.body.track_list
         })
