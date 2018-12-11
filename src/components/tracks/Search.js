@@ -3,7 +3,8 @@ import { Consumer } from '../../context';
 
 class Search extends Component {
     state = {
-        trackTitle: ''
+        trackTitle: '',
+        artistName: '',
     }
 
     handleChange = e => {
@@ -15,7 +16,7 @@ class Search extends Component {
     findTrack = async (dispatch, e) => {
         e.preventDefault();
 
-        let response = await fetch(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${this.state.trackTitle}&page_size=10&apikey=${process.env.REACT_APP_MM_KEY}`);
+        let response = await fetch(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${this.state.trackTitle}&q_artist=${this.state.artistName}&page_size=10&apikey=${process.env.REACT_APP_MM_KEY}`);
 
         let parsedResponse = await response.json();
 
@@ -25,7 +26,8 @@ class Search extends Component {
         })
 
         this.setState({
-            trackTitle: ''
+            trackTitle: '',
+            artistName: ''
         })
     }
 
@@ -46,6 +48,12 @@ class Search extends Component {
                                     placeholder="Song title..."
                                     name="trackTitle"
                                     value={this.state.trackTitle}
+                                    onChange={this.handleChange}
+                                    />
+                                    <input type="text" className="form-control form-control-lg mt-3"
+                                    placeholder="Artist name..."
+                                    name="artistName"
+                                    value={this.state.artistName}
                                     onChange={this.handleChange}
                                     />
                                 </div>
